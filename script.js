@@ -88,6 +88,7 @@ class PersonCl {
   }
 
   // Methods will be added to .prototype property
+  // Instant methods
   calcAge() {
     console.log(2037 - this.birthYear);
   }
@@ -110,6 +111,12 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // Static methods
+  static hey() {
+    console.log('Hey there 🙋‍♀️');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -130,6 +137,7 @@ jessica.greet();
 
 const walter = new Person('Walter', 1965);
 
+PersonCl.hey();
 // ******************** Getters and Setters ***********************
 const account = {
   owner: 'Jonas',
@@ -148,3 +156,14 @@ console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+
+// ********************** Static methods ****************************
+
+Array.from(document.querySelectorAll('h1')); // [h1]
+
+Person.hey = function () {
+  console.log('Hey there 🙋‍♀️');
+  console.log(this);
+};
+
+Person.hey();
