@@ -222,3 +222,30 @@ console.log(mike instanceof Object); //true
 
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
+
+// ****************** Inheritance between ES6 Classes ***************
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs happen first!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+  introduce = function () {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  };
+
+  calcAge() {
+    console.log(
+      `I'm ${
+        2037 - this.birthYear
+      } years old, but as a student I feel more like ${
+        2037 - this.birthYear + 10
+      }`
+    );
+  }
+}
+
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
+martha.introduce();
+martha.calcAge();
