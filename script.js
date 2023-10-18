@@ -281,19 +281,34 @@ jay.calcAge();
 
 // ************************ Another Class example ******************
 
+// 1) Public fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+// (there is also the static version)
+
 class Account {
+  // 1) Public fields (instances)
+  locale = navigator.language;
+  _movements = [];
+
+  // 2) Private fields
+  // #movements = [];
+  // #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     // protected property
+    // this.#pin = pin
     this._pin = pin;
-    this._movements = [];
-    this.locale = navigator.language;
+    // this._movements = [];
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
-  // Public interface
+  // 3) Public methods
   getMovements() {
     return this._movements;
   }
@@ -305,15 +320,20 @@ class Account {
     this.deposit(-val);
   }
 
-  _approveLoan(val) {
-    return true;
-  }
+  // _approveLoan(val) {
+  //   return true;
+  // }
 
   requesLoan(val) {
-    if (this._approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
     }
+  }
+
+  // 4) Private methods
+  #approveLoan(val) {
+    return true;
   }
 }
 
